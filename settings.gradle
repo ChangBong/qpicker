@@ -1,0 +1,4 @@
+rootProject.name = 'qpicker'
+include 'qpicker-core'
+include 'qpicker-api'
+

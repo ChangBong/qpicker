@@ -1,0 +1,63 @@
+buildscript {
+	ext {
+		springBootVersion = '2.5.3'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath "io.spring.gradle:dependency-management-plugin:1.0.6.RELEASE"
+	}
+}
+
+subprojects {
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+	apply plugin: 'java'
+
+	group = 'com.peopulley'
+	version = ''
+	sourceCompatibility = '1.8'
+
+	repositories {
+		mavenCentral()
+	}
+
+	configurations {
+		compileOnly {
+			extendsFrom annotationProcessor
+		}
+		/*all {
+            exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+        }*/
+	}
+
+	dependencies {
+		compileOnly 'org.projectlombok:lombok'
+		annotationProcessor 'org.projectlombok:lombok'
+
+	}
+}
+/*
+
+project(':qpicker-core'){
+	bootJar {
+		enabled = false
+	}
+	jar {
+		enabled = true
+	}
+	dependencies {
+
+	}
+}
+*/
+
+/*
+
+project(':qpicker-api'){
+	dependencies {
+		compileOnly project(':qpicker-core')
+	}
+}*/
