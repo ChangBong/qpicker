@@ -1,0 +1,52 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    /* security */
+//    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+//    implementation group: 'org.springframework.security.oauth.boot', name: 'spring-security-oauth2-autoconfigure', version: '2.4.5'
+//    implementation 'org.springframework.boot:spring-boot-starter-security'
+//    testImplementation 'org.springframework.security:spring-security-test'
+
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.4.5'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    /* redis */
+//    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+//    implementation 'it.ozimov:embedded-redis:0.7.2'
+
+    /* swagger */
+    implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+    implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+
+    /* Model Mapper */
+    implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.1.1'
+
+    /* jwt */
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.2'
+
+    implementation group: 'org.reflections', name: 'reflections', version: '0.9.10'
+
+    implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.3.4'
+
+    implementation project(path:":qpicker-core", configuration : 'default')
+
+}
+
+test {
+    useJUnitPlatform()
+}

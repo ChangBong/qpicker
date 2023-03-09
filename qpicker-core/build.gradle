@@ -1,0 +1,51 @@
+plugins {
+    id 'com.ewerk.gradle.plugins.querydsl' version '1.0.10'
+}
+
+// QueryDSL Version
+def queryDSLVersion = '4.2.2'
+// QueryDSL PATH
+def querydslDir = "$buildDir/generated/querydsl"
+
+dependencies {
+    compile group : 'org.bgee.log4jdbc-log4j2', name: 'log4jdbc-log4j2-jdbc4.1', version: '1.16'
+    compile 'com.h2database:h2'
+
+    compile("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok")
+
+    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.hibernate.validator:hibernate-validator'
+    runtimeOnly 'mysql:mysql-connector-java'
+    implementation 'com.querydsl:querydsl-jpa'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+querydsl {
+    jpa = true
+    querydslSourcesDir = querydslDir
+}
+
+sourceSets {
+    main.java.srcDirs += [querydslDir]
+}
+
+configurations {
+    querydsl.extendsFrom compileClasspath
+}
+
+compileQuerydsl {
+    options.annotationProcessorPath = configurations.querydsl
+}
+
+bootJar {
+    enabled = false
+}
+jar {
+    enabled = true
+}
