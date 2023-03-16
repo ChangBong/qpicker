@@ -1,4 +1,5 @@
 rootProject.name = 'qpicker'
 include 'qpicker-core'
-include 'qpicker-api'
+include 'admin-api'
+include 'admin-repository'
 

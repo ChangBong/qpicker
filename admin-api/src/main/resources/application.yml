@@ -1,0 +1,60 @@
+
+cloud:
+  aws:
+    s3:
+      bucket: file.qpicker.site
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
+    credentials:
+      instance-profile: true
+
+---
+
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+  baseUrl: localhost:8080
+  jwt:
+    secret: "Zg+Jwk/DANCXZOqxqY8a5K52BPWppQcwzYU+21uMFIc="
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.0.77:3306/qpicker_new?useSSL=false&serverTimezone=Asia/Seoul&useLegacyDatetimeCode=false
+    username: qpicker_dev
+    password: qpicker0@@
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        query:
+          in_clause_parameter_padding: true
+        dialect: com.peopulley.core.dialet.MySQL57DialectCustom
+        use_sql_comments: true
+        format_sql: true
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 1MB
+      max-file-size: 20MB
+      max-request-size: 20MB
+      location: /home/qpicker_new
+
+server:
+  port: 8080
+
+#logging
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    org:
+      springframework:
+        boot:
+          autoconfigure:
+            logging : info
+

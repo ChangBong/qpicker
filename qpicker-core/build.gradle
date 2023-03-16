@@ -20,6 +20,11 @@ dependencies {
     implementation 'org.hibernate.validator:hibernate-validator'
     runtimeOnly 'mysql:mysql-connector-java'
     implementation 'com.querydsl:querydsl-jpa'
+
+    /* swagger */
+    implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+    implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+
 }
 
 test {

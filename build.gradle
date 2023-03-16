@@ -39,25 +39,3 @@ subprojects {
 
 	}
 }
-/*
-
-project(':qpicker-core'){
-	bootJar {
-		enabled = false
-	}
-	jar {
-		enabled = true
-	}
-	dependencies {
-
-	}
-}
-*/
-
-/*
-
-project(':qpicker-api'){
-	dependencies {
-		compileOnly project(':qpicker-core')
-	}
-}*/
